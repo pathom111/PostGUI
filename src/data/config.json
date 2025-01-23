@@ -1,8 +1,8 @@
 {
   "databases": [
     {
-      "title": "DVD Rentals",
-      "url": "http://localhost:3001",
+      "title": "Eutops DB",
+      "url": "http://localhost:3000",
       "publicDbAcessType": "read",
       "foreignKeySearch": true,
       "primaryKeyFunction": true,
