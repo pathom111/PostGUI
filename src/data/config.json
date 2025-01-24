@@ -2,7 +2,7 @@
   "databases": [
     {
       "title": "Eutops DB",
-      "url": "http://localhost:3000",
+      "url": "http://eutops-server1.uibk.ac.at:3000",
       "publicDbAcessType": "read",
       "foreignKeySearch": true,
       "primaryKeyFunction": true,
