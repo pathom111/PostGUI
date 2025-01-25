@@ -271,6 +271,7 @@ export default class Layout extends React.Component<IAppProps, IAppState> {
       userName: "Unknown username",
       isLoggedIn: false
     });
+    window.location.reload();
   };
 
   setUserEmailPassword(email: string, password: string) {

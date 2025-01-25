@@ -102,7 +102,7 @@ BEGIN
   END IF;
 
   SELECT sign(
-      row_to_json(r), 'fkajs;dlkfjieondskj82naj8jkldjkldas87'
+      row_to_json(r), 'extImmPVQ4PjX4A3KaOZtm2PZuCaDng1rBwGcHMcLF7gi1ZwJM6QzR79wyVGzP1A'
     ) AS token
     from (
       SELECT _role AS role, login.email AS email,

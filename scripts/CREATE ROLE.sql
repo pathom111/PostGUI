@@ -6,7 +6,7 @@
 
 -- Allows for read only access
 CREATE ROLE readuser;
-GRANT CONNECT ON DATABASE <<<<DATABASE_NAME>>>> TO readuser;
+GRANT CONNECT ON DATABASE eutops_db TO readuser;
 GRANT USAGE ON SCHEMA public TO readuser;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO readuser;
 
@@ -17,7 +17,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO readuser;
 
 # Can do everything PostgREST can
 CREATE ROLE edituser;
-GRANT CONNECT ON DATABASE <<<<DATABASE_NAME>>>> TO edituser;
+GRANT CONNECT ON DATABASE eutops_db TO edituser;
 GRANT USAGE ON SCHEMA public TO edituser;
 GRANT SELECT ON ALL TABLES IN SCHEMA public to edituser;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public to edituser;

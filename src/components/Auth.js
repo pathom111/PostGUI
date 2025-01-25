@@ -18,14 +18,14 @@ export default class Auth {
   async getUserDetails() {
     // Returns an object with info about the currently logged in user
     if (!this.isAuthenticated()) {
-      await this._loginPostRequest().then(resp => {
+      await this._loginPostRequest().then((resp) => {
         return resp;
       });
     }
     return {
       isLoggedIn: this.isLoggedIn,
       jwtToken: this.jwtToken,
-      name: this.name || this.userEmail || "Unknown"
+      name: this.name || this.userEmail || "Unknown",
     };
   }
 
@@ -54,7 +54,8 @@ export default class Auth {
 
   isAuthenticated() {
     // Return true iff user is authenticated and jwt is still valid
-    let emailRegEx = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // From http://emailregex.com/
+    let emailRegEx =
+      /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // From http://emailregex.com/
 
     if (
       this.jwtTokenExpiry > Date.now() &&
@@ -74,14 +75,15 @@ export default class Auth {
   async _loginPostRequest() {
     if (this.userEmail && this.userPassword) {
       let loginUrl = lib.getDbConfig(this.dbIndex, "url") + "/rpc/login";
-
+      //console.log(loginUrl);
       // Makes the HTTP request to obtain JWT token + jwtTokenExpiry + user details
       try {
         let rawResp = await axios.post(loginUrl, {
           email: this.userEmail,
-          pass: this.userPassword
+          pass: this.userPassword,
         });
-        let data = rawResp.data[0];
+        let data = rawResp.data;
+        //console.log(rawResp.data);
         this._setStatusTokenExpiry(true, data.token, data.tokenExpiry);
 
         return data;
@@ -115,7 +117,7 @@ export default class Auth {
       userEmail: this.userEmail,
       userPassword: this.userPassword,
       jwtToken: this.jwtToken,
-      jwtTokenExpiry: this.jwtTokenExpiry
+      jwtTokenExpiry: this.jwtTokenExpiry,
     });
   }
 }
